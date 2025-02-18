@@ -1,1 +1,1 @@
-/usr/bin/hipcc  -fno-gpu-rdc -munsafe-fp-atomics -fPIC -w CMakeFiles/rocblas_dgemm.dir/rocblas_dgemm.cpp.o -o rocblas_dgemm  /opt/rocm-6.0.3/lib/libhipblas.so /opt/rocm-6.0.3/lib/librocblas.so 
+/usr/bin/hipcc  -fno-gpu-rdc -munsafe-fp-atomics -fPIC -w -fno-gpu-rdc -munsafe-fp-atomics -fPIC -w CMakeFiles/rocblas_dgemm.dir/rocblas_dgemm.cpp.o -o rocblas_dgemm  /opt/rocm-6.0.3/lib/libhipblas.so /opt/rocm-6.0.3/lib/librocblas.so 

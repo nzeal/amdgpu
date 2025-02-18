@@ -1,4 +1,4 @@
-# Install script for directory: /pfs/lustrep1/scratch/project_465000972/test/amdgpu/rocblas
+# Install script for directory: /pfs/lustrep1/scratch/project_465000972/test/amdgpu/rocblas_dgemm
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/pfs/lustrep1/scratch/project_465000972/test/amdgpu/rocblas/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/pfs/lustrep1/scratch/project_465000972/test/amdgpu/rocblas_dgemm/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

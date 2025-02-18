@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/opt/rocm-6.0.3/include/hipblas -I/opt/rocm-6.0.3/include/rocblas
 
-CXX_FLAGS =  -fno-gpu-rdc -munsafe-fp-atomics -fPIC -w -std=c++14
+CXX_FLAGS =  -fno-gpu-rdc -munsafe-fp-atomics -fPIC -w -fno-gpu-rdc -munsafe-fp-atomics -fPIC -w -std=c++14
 

@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /pfs/lustrep1/scratch/project_465000972/test/amdgpu/rocblas
+CMAKE_SOURCE_DIR = /pfs/lustrep1/scratch/project_465000972/test/amdgpu/rocblas_dgemm
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /pfs/lustrep1/scratch/project_465000972/test/amdgpu/rocblas/build
+CMAKE_BINARY_DIR = /pfs/lustrep1/scratch/project_465000972/test/amdgpu/rocblas_dgemm/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /pfs/lustrep1/scratch/project_465000972/test/amdgpu/rocblas/build/CMakeFiles /pfs/lustrep1/scratch/project_465000972/test/amdgpu/rocblas/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /pfs/lustrep1/scratch/project_465000972/test/amdgpu/rocblas_dgemm/build/CMakeFiles /pfs/lustrep1/scratch/project_465000972/test/amdgpu/rocblas_dgemm/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /pfs/lustrep1/scratch/project_465000972/test/amdgpu/rocblas/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /pfs/lustrep1/scratch/project_465000972/test/amdgpu/rocblas_dgemm/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

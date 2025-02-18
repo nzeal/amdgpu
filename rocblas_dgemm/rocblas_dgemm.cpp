@@ -227,6 +227,10 @@ int main() {
 
     // Print results
     printSummary(results);
+     
+    std::cout << "-----------------------------------------------------------------\n";
+    std::cout << "ROCBLAS DGEMM completed successfully." << std::endl;
+
 
     // Cleanup
     CHECK_ROCBLAS(rocblas_destroy_handle(handle));

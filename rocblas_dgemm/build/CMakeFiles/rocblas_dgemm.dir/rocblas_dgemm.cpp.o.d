@@ -1,5 +1,5 @@
 CMakeFiles/rocblas_dgemm.dir/rocblas_dgemm.cpp.o: \
-  /pfs/lustrep1/scratch/project_465000972/test/amdgpu/rocblas/rocblas_dgemm.cpp \
+  /pfs/lustrep1/scratch/project_465000972/test/amdgpu/rocblas_dgemm/rocblas_dgemm.cpp \
   /opt/rocm-6.0.3/lib/llvm/lib/clang/17.0.0/include/__clang_hip_runtime_wrapper.h \
   /opt/rocm-6.0.3/lib/llvm/lib/clang/17.0.0/include/cuda_wrappers/cmath \
   /usr/lib64/gcc/x86_64-suse-linux/13/../../../../include/c++/13/cmath \
