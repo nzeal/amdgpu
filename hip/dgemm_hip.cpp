@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <cuda_runtime.h>
-#include <cublas_v2.h>
+#include <hip/hip_runtime.h>
 #include "./includes/error_checking.h"
 #include "./includes/performance_result.h"
 #include "./includes/performance_utils.h"
@@ -10,22 +9,8 @@
 #include <iomanip>
 #include <string>
 
-// Add CUDA kernel qualifier
 __global__ void matrixMulKernel(const double *A, const double *B, double *C, int m, int n, int k) {
-    // CUDA built-in variables are available in device code
-NVCC = nvcc
-NVCC_FLAGS = -O3 -arch=sm_60  # adjust sm_60 to match your GPU architecture
-
-all: dgemm_cuda
-
-dgemm_cuda: dgemm_cuda.o
-	$(NVCC) $(NVCC_FLAGS) -o dgemm_cuda dgemm_cuda.o -lcublas
-
-dgemm_cuda.o: dgemm_cuda.cu
-	$(NVCC) $(NVCC_FLAGS) -c dgemm_cuda.cu
-
-clean:
-	rm -f dgemm_cuda *.o    int row = blockIdx.y * blockDim.y + threadIdx.y;
+    int row = blockIdx.y * blockDim.y + threadIdx.y;
     int col = blockIdx.x * blockDim.x + threadIdx.x;
 
     if (row < m && col < n) {
@@ -37,8 +22,7 @@ clean:
     }
 }
 
-// Function to run DGEMM with cuBLAS handle
-void runDGEMM(cublasHandle_t handle, int size, std::vector<PerformanceResult>& results) {
+void runDGEMM(int size, std::vector<PerformanceResult>& results) {
     const int m = size;
     const int k = size;
     const int n = size;
@@ -62,19 +46,19 @@ void runDGEMM(cublasHandle_t handle, int size, std::vector<PerformanceResult>& r
 
     // Allocate device memory
     double *d_A, *d_B, *d_C;
-    CHECK_CUDA(cudaMalloc(&d_A, size_A));
-    CHECK_CUDA(cudaMalloc(&d_B, size_B));
-    CHECK_CUDA(cudaMalloc(&d_C, size_C));
+    hipMalloc(&d_A, size_A);
+    hipMalloc(&d_B, size_B);
+    hipMalloc(&d_C, size_C);
 
     PerformanceResult result;
     result.size = size;
 
     // Transfer data to device
-    cudaDeviceSynchronize();
+    hipDeviceSynchronize();
     auto transfer_start = getCurrentTime();
-    CHECK_CUDA(cudaMemcpy(d_A, h_A, size_A, cudaMemcpyHostToDevice));
-    CHECK_CUDA(cudaMemcpy(d_B, h_B, size_B, cudaMemcpyHostToDevice));
-    cudaDeviceSynchronize();
+    hipMemcpy(d_A, h_A, size_A, hipMemcpyHostToDevice);
+    hipMemcpy(d_B, h_B, size_B, hipMemcpyHostToDevice);
+    hipDeviceSynchronize();
     auto transfer_end = getCurrentTime();
 
     result.transfer_to_device_time = calculateDurationInSeconds(transfer_start, transfer_end);
@@ -86,13 +70,13 @@ void runDGEMM(cublasHandle_t handle, int size, std::vector<PerformanceResult>& r
 
     // Define grid and block dimensions
     dim3 threadsPerBlock(16, 16); // 16x16 threads per block
-    dim3 numBlocks((n + threadsPerBlock.x - 1) / threadsPerBlock.x, 
+    dim3 numBlocks((n + threadsPerBlock.x - 1) / threadsPerBlock.x,
                    (m + threadsPerBlock.y - 1) / threadsPerBlock.y); // Number of blocks
 
     // Launch the matrix multiplication kernel
     auto compute_start = getCurrentTime();
-    matrixMulKernel<<<numBlocks, threadsPerBlock>>>(d_A, d_B, d_C, m, n, k);
-    cudaDeviceSynchronize();
+    hipLaunchKernelGGL(matrixMulKernel, numBlocks, threadsPerBlock, 0, 0, d_A, d_B, d_C, m, n, k);
+    hipDeviceSynchronize();
     auto compute_end = getCurrentTime();
 
     result.computation_time = calculateDurationInSeconds(compute_start, compute_end);
@@ -104,10 +88,10 @@ void runDGEMM(cublasHandle_t handle, int size, std::vector<PerformanceResult>& r
            result.gflops);
 
     // Transfer result back to host
-    cudaDeviceSynchronize();
+    hipDeviceSynchronize();
     auto transfer_back_start = getCurrentTime();
-    CHECK_CUDA(cudaMemcpy(h_C, d_C, size_C, cudaMemcpyDeviceToHost));
-    cudaDeviceSynchronize();
+    hipMemcpy(h_C, d_C, size_C, hipMemcpyDeviceToHost);
+    hipDeviceSynchronize();
     auto transfer_back_end = getCurrentTime();
 
     result.transfer_from_device_time = calculateDurationInSeconds(transfer_back_start, transfer_back_end);
@@ -128,9 +112,9 @@ void runDGEMM(cublasHandle_t handle, int size, std::vector<PerformanceResult>& r
     results.push_back(result);
 
     // Cleanup
-    CHECK_CUDA(cudaFree(d_A));
-    CHECK_CUDA(cudaFree(d_B));
-    CHECK_CUDA(cudaFree(d_C));
+    hipFree(d_A);
+    hipFree(d_B);
+    hipFree(d_C);
     free(h_A);
     free(h_B);
     free(h_C);
@@ -156,14 +140,10 @@ int main() {
     std::vector<int> sizes = {32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384};
     std::vector<PerformanceResult> results;
 
-    // Initialize cuBLAS
-    cublasHandle_t handle;
-    CHECK_CUBLAS(cublasCreate(&handle));
-
     // Print device information
-    cudaDeviceProp prop;
-    cudaGetDeviceProperties(&prop, 0);
-    printf("=== CUDA Device Information ===\n");
+    hipDeviceProp_t prop;
+    hipGetDeviceProperties(&prop, 0);
+    printf("=== HIP Device Information ===\n");
     printf("Device: %s\n", prop.name);
     printf("Compute Capability: %d.%d\n", prop.major, prop.minor);
     printf("Max Threads per Block: %d\n", prop.maxThreadsPerBlock);
@@ -172,7 +152,7 @@ int main() {
     // Run tests
     for (int size : sizes) {
         try {
-            runDGEMM(handle, size, results);
+            runDGEMM(size, results);
         } catch (const std::exception& e) {
             std::cerr << "Error testing size " << size << ": " << e.what() << std::endl;
             continue;
@@ -182,6 +162,6 @@ int main() {
     // Print final summary
     printSummary(results);
 
-
     return 0;
 }
+
