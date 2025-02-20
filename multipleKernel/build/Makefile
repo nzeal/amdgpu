@@ -270,29 +270,29 @@ cudafun/matrix_mul_kernel4.cu.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DGEMM_CUDA.dir/build.make CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel4.cu.s
 .PHONY : cudafun/matrix_mul_kernel4.cu.s
 
-cudafun/run_dgemm.o: cudafun/run_dgemm.cu.o
-.PHONY : cudafun/run_dgemm.o
+cudafun/matrix_mul_kernel5.o: cudafun/matrix_mul_kernel5.cu.o
+.PHONY : cudafun/matrix_mul_kernel5.o
 
 # target to build an object file
-cudafun/run_dgemm.cu.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DGEMM_CUDA.dir/build.make CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.o
-.PHONY : cudafun/run_dgemm.cu.o
+cudafun/matrix_mul_kernel5.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DGEMM_CUDA.dir/build.make CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel5.cu.o
+.PHONY : cudafun/matrix_mul_kernel5.cu.o
 
-cudafun/run_dgemm.i: cudafun/run_dgemm.cu.i
-.PHONY : cudafun/run_dgemm.i
+cudafun/matrix_mul_kernel5.i: cudafun/matrix_mul_kernel5.cu.i
+.PHONY : cudafun/matrix_mul_kernel5.i
 
 # target to preprocess a source file
-cudafun/run_dgemm.cu.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DGEMM_CUDA.dir/build.make CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.i
-.PHONY : cudafun/run_dgemm.cu.i
+cudafun/matrix_mul_kernel5.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DGEMM_CUDA.dir/build.make CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel5.cu.i
+.PHONY : cudafun/matrix_mul_kernel5.cu.i
 
-cudafun/run_dgemm.s: cudafun/run_dgemm.cu.s
-.PHONY : cudafun/run_dgemm.s
+cudafun/matrix_mul_kernel5.s: cudafun/matrix_mul_kernel5.cu.s
+.PHONY : cudafun/matrix_mul_kernel5.s
 
 # target to generate assembly for a file
-cudafun/run_dgemm.cu.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DGEMM_CUDA.dir/build.make CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.s
-.PHONY : cudafun/run_dgemm.cu.s
+cudafun/matrix_mul_kernel5.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DGEMM_CUDA.dir/build.make CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel5.cu.s
+.PHONY : cudafun/matrix_mul_kernel5.cu.s
 
 dgemm_cuda.o: dgemm_cuda.cpp.o
 .PHONY : dgemm_cuda.o
@@ -317,6 +317,30 @@ dgemm_cuda.s: dgemm_cuda.cpp.s
 dgemm_cuda.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DGEMM_CUDA.dir/build.make CMakeFiles/DGEMM_CUDA.dir/dgemm_cuda.cpp.s
 .PHONY : dgemm_cuda.cpp.s
+
+run_dgemm.o: run_dgemm.cu.o
+.PHONY : run_dgemm.o
+
+# target to build an object file
+run_dgemm.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DGEMM_CUDA.dir/build.make CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o
+.PHONY : run_dgemm.cu.o
+
+run_dgemm.i: run_dgemm.cu.i
+.PHONY : run_dgemm.i
+
+# target to preprocess a source file
+run_dgemm.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DGEMM_CUDA.dir/build.make CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.i
+.PHONY : run_dgemm.cu.i
+
+run_dgemm.s: run_dgemm.cu.s
+.PHONY : run_dgemm.s
+
+# target to generate assembly for a file
+run_dgemm.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DGEMM_CUDA.dir/build.make CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.s
+.PHONY : run_dgemm.cu.s
 
 utility/print_summary.o: utility/print_summary.cpp.o
 .PHONY : utility/print_summary.o
@@ -367,12 +391,15 @@ help:
 	@echo "... cudafun/matrix_mul_kernel4.o"
 	@echo "... cudafun/matrix_mul_kernel4.i"
 	@echo "... cudafun/matrix_mul_kernel4.s"
-	@echo "... cudafun/run_dgemm.o"
-	@echo "... cudafun/run_dgemm.i"
-	@echo "... cudafun/run_dgemm.s"
+	@echo "... cudafun/matrix_mul_kernel5.o"
+	@echo "... cudafun/matrix_mul_kernel5.i"
+	@echo "... cudafun/matrix_mul_kernel5.s"
 	@echo "... dgemm_cuda.o"
 	@echo "... dgemm_cuda.i"
 	@echo "... dgemm_cuda.s"
+	@echo "... run_dgemm.o"
+	@echo "... run_dgemm.i"
+	@echo "... run_dgemm.s"
 	@echo "... utility/print_summary.o"
 	@echo "... utility/print_summary.i"
 	@echo "... utility/print_summary.s"

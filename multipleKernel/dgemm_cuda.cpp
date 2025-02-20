@@ -25,7 +25,7 @@ int main() {
     cudaGetDeviceCount(&deviceCount);
     std::cout << "Number of CUDA devices: " << deviceCount << std::endl;
 
-    std::vector<int> sizes = {2048};
+    std::vector<int> sizes = {1024};
     std::vector<PerformanceResult> results;
 
     // Print device information

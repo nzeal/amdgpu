@@ -157,6 +157,7 @@ void runDGEMM(int size, std::vector<PerformanceResult>& results) {
     double alpha = 1.0;
     double beta = 0.0;
 
+    printf("----------------------------------------------- Kernel-1\n");
     // Run and verify Kernel 1
     runKernel(matrixMulKernel1, d_A, d_B, d_C,
 		    m, n, k, numBlocks, threadsPerBlock,
@@ -169,6 +170,8 @@ void runDGEMM(int size, std::vector<PerformanceResult>& results) {
     for(int i = 0; i < m * n; i++) h_C[i] = 0.0;
     CHECK_CUDA(cudaMemcpy(d_C, h_C, m * n * sizeof(double), cudaMemcpyHostToDevice));
 
+    printf("----------------------------------------------- Kernel-2\n");
+
     // Run and verify Kernel 2
     runKernel(matrixMulKernel2, d_A, d_B, d_C,
 		    m, n, k, numBlocks, threadsPerBlock, 
@@ -177,6 +180,7 @@ void runDGEMM(int size, std::vector<PerformanceResult>& results) {
     printf("Verifying Kernel 2 results:\n");
     verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
 
+    printf("----------------------------------------------- Kernel-3\n");
     // Run and verify kernel 3 
      runKernel(matrixMulKernel3, d_A, d_B, d_C, 
 		     m, n, k, numBlocks, threadsPerBlock, 
@@ -186,14 +190,24 @@ void runDGEMM(int size, std::vector<PerformanceResult>& results) {
     verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
 
 
+    printf("----------------------------------------------- Kernel-4\n");
     // Run and verify kernel 4
     runKernel(matrixMulKernel4, d_A, d_B, d_C,
-                     m, n, k, numBlocks, threadsPerBlock,
-                     "Kernel 4", result, alpha, beta);
+        m, n, k, numBlocks, threadsPerBlock,
+        "Kernel 4", result, alpha, beta);
     transferDataFromDevice(h_C, d_C, m, n, "Kernel 4", result);
     printf("Verifying Kernel 4 results:\n"); 
     verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
 
+
+    printf("----------------------------------------------- Kernel-5\n");
+    // Run and verify kernel 5
+    runKernel(matrixMulKernel5, d_A, d_B, d_C,
+                     m, n, k, numBlocks, threadsPerBlock,
+                     "Kernel 5", result, alpha, beta);
+    transferDataFromDevice(h_C, d_C, m, n, "Kernel 5", result);
+    printf("Verifying Kernel 5 results:\n");
+    verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
 
     results.push_back(result);
 
