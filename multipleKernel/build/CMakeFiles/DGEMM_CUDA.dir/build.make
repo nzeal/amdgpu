@@ -82,10 +82,24 @@ CMakeFiles/DGEMM_CUDA.dir/dgemm_cuda.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DGEMM_CUDA.dir/dgemm_cuda.cpp.s"
 	/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/compilers/bin/nvc++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/dgemm_cuda.cpp -o CMakeFiles/DGEMM_CUDA.dir/dgemm_cuda.cpp.s
 
+CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o: CMakeFiles/DGEMM_CUDA.dir/flags.make
+CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o: ../run_dgemm.cu
+CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o: CMakeFiles/DGEMM_CUDA.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CUDA object CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o"
+	/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/compilers/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o -MF CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o.d -x cu -c /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/run_dgemm.cu -o CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o
+
+CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel1.cu.o: CMakeFiles/DGEMM_CUDA.dir/flags.make
 CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel1.cu.o: ../cudafun/matrix_mul_kernel1.cu
 CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel1.cu.o: CMakeFiles/DGEMM_CUDA.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CUDA object CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel1.cu.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CUDA object CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel1.cu.o"
 	/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/compilers/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel1.cu.o -MF CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel1.cu.o.d -x cu -c /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/cudafun/matrix_mul_kernel1.cu -o CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel1.cu.o
 
 CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel1.cu.i: cmake_force
@@ -99,7 +113,7 @@ CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel1.cu.s: cmake_force
 CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel2.cu.o: CMakeFiles/DGEMM_CUDA.dir/flags.make
 CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel2.cu.o: ../cudafun/matrix_mul_kernel2.cu
 CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel2.cu.o: CMakeFiles/DGEMM_CUDA.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CUDA object CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel2.cu.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CUDA object CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel2.cu.o"
 	/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/compilers/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel2.cu.o -MF CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel2.cu.o.d -x cu -c /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/cudafun/matrix_mul_kernel2.cu -o CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel2.cu.o
 
 CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel2.cu.i: cmake_force
@@ -110,23 +124,51 @@ CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel2.cu.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel2.cu.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
-CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.o: CMakeFiles/DGEMM_CUDA.dir/flags.make
-CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.o: ../cudafun/run_dgemm.cu
-CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.o: CMakeFiles/DGEMM_CUDA.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CUDA object CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.o"
-	/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/compilers/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.o -MF CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.o.d -x cu -c /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/cudafun/run_dgemm.cu -o CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.o
+CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel3.cu.o: CMakeFiles/DGEMM_CUDA.dir/flags.make
+CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel3.cu.o: ../cudafun/matrix_mul_kernel3.cu
+CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel3.cu.o: CMakeFiles/DGEMM_CUDA.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CUDA object CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel3.cu.o"
+	/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/compilers/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel3.cu.o -MF CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel3.cu.o.d -x cu -c /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/cudafun/matrix_mul_kernel3.cu -o CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel3.cu.o
 
-CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.i"
+CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel3.cu.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel3.cu.i"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
 
-CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.s"
+CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel3.cu.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel3.cu.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
+
+CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel4.cu.o: CMakeFiles/DGEMM_CUDA.dir/flags.make
+CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel4.cu.o: ../cudafun/matrix_mul_kernel4.cu
+CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel4.cu.o: CMakeFiles/DGEMM_CUDA.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CUDA object CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel4.cu.o"
+	/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/compilers/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel4.cu.o -MF CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel4.cu.o.d -x cu -c /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/cudafun/matrix_mul_kernel4.cu -o CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel4.cu.o
+
+CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel4.cu.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel4.cu.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel4.cu.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel4.cu.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
+
+CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel5.cu.o: CMakeFiles/DGEMM_CUDA.dir/flags.make
+CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel5.cu.o: ../cudafun/matrix_mul_kernel5.cu
+CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel5.cu.o: CMakeFiles/DGEMM_CUDA.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CUDA object CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel5.cu.o"
+	/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/compilers/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel5.cu.o -MF CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel5.cu.o.d -x cu -c /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/cudafun/matrix_mul_kernel5.cu -o CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel5.cu.o
+
+CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel5.cu.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel5.cu.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel5.cu.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel5.cu.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
 CMakeFiles/DGEMM_CUDA.dir/utility/print_summary.cpp.o: CMakeFiles/DGEMM_CUDA.dir/flags.make
 CMakeFiles/DGEMM_CUDA.dir/utility/print_summary.cpp.o: ../utility/print_summary.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/DGEMM_CUDA.dir/utility/print_summary.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/DGEMM_CUDA.dir/utility/print_summary.cpp.o"
 	/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/compilers/bin/nvc++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DGEMM_CUDA.dir/utility/print_summary.cpp.o -c /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/utility/print_summary.cpp
 
 CMakeFiles/DGEMM_CUDA.dir/utility/print_summary.cpp.i: cmake_force
@@ -140,24 +182,30 @@ CMakeFiles/DGEMM_CUDA.dir/utility/print_summary.cpp.s: cmake_force
 # Object files for target DGEMM_CUDA
 DGEMM_CUDA_OBJECTS = \
 "CMakeFiles/DGEMM_CUDA.dir/dgemm_cuda.cpp.o" \
+"CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o" \
 "CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel1.cu.o" \
 "CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel2.cu.o" \
-"CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.o" \
+"CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel3.cu.o" \
+"CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel4.cu.o" \
+"CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel5.cu.o" \
 "CMakeFiles/DGEMM_CUDA.dir/utility/print_summary.cpp.o"
 
 # External object files for target DGEMM_CUDA
 DGEMM_CUDA_EXTERNAL_OBJECTS =
 
 DGEMM_CUDA: CMakeFiles/DGEMM_CUDA.dir/dgemm_cuda.cpp.o
+DGEMM_CUDA: CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o
 DGEMM_CUDA: CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel1.cu.o
 DGEMM_CUDA: CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel2.cu.o
-DGEMM_CUDA: CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.o
+DGEMM_CUDA: CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel3.cu.o
+DGEMM_CUDA: CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel4.cu.o
+DGEMM_CUDA: CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel5.cu.o
 DGEMM_CUDA: CMakeFiles/DGEMM_CUDA.dir/utility/print_summary.cpp.o
 DGEMM_CUDA: CMakeFiles/DGEMM_CUDA.dir/build.make
 DGEMM_CUDA: /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/lib64/libcudart_static.a
 DGEMM_CUDA: /usr/lib64/librt.so
 DGEMM_CUDA: CMakeFiles/DGEMM_CUDA.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable DGEMM_CUDA"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable DGEMM_CUDA"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DGEMM_CUDA.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
