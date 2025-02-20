@@ -1,4 +1,4 @@
-CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o : /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/run_dgemm.cu \
+CMakeFiles/DGEMM_CUDA.dir/cudafun/data_transfer.cu.o : /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/cudafun/data_transfer.cu \
     /usr/include/stdc-predef.h \
     /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/cuda_runtime.h \
     /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/crt/host_config.h \
@@ -154,6 +154,20 @@ CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o : /leonardo_scratch/large/userinternal/
     /usr/include/c++/8/bits/stl_relops.h \
     /usr/include/c++/8/bits/stl_pair.h \
     /usr/include/c++/8/initializer_list \
+    /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/cudafun/../includes/matrix_management.h \
+    /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/cudafun/../includes/error_checking.h \
+    /usr/include/c++/8/cstdio \
+    /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/cudafun/../includes/performance_utils.h \
+    /usr/include/c++/8/chrono \
+    /usr/include/c++/8/ratio \
+    /usr/include/c++/8/cstdint \
+    /usr/lib/gcc/x86_64-redhat-linux/8/include/stdint.h \
+    /usr/include/stdint.h \
+    /usr/include/bits/wchar.h \
+    /usr/include/bits/stdint-uintn.h \
+    /usr/include/c++/8/limits \
+    /usr/include/c++/8/ctime \
+    /usr/include/c++/8/bits/parse_numbers.h \
     /usr/include/c++/8/iostream \
     /usr/include/c++/8/ostream \
     /usr/include/c++/8/ios \
@@ -163,7 +177,6 @@ CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o : /leonardo_scratch/large/userinternal/
     /usr/include/c++/8/bits/postypes.h \
     /usr/include/c++/8/cwchar \
     /usr/include/wchar.h \
-    /usr/include/bits/wchar.h \
     /usr/include/bits/types/wint_t.h \
     /usr/include/bits/types/mbstate_t.h \
     /usr/include/c++/8/bits/char_traits.h \
@@ -177,10 +190,6 @@ CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o : /leonardo_scratch/large/userinternal/
     /usr/include/c++/8/bits/ptr_traits.h \
     /usr/include/c++/8/debug/debug.h \
     /usr/include/c++/8/bits/predefined_ops.h \
-    /usr/include/c++/8/cstdint \
-    /usr/lib/gcc/x86_64-redhat-linux/8/include/stdint.h \
-    /usr/include/stdint.h \
-    /usr/include/bits/stdint-uintn.h \
     /usr/include/c++/8/bits/localefwd.h \
     /usr/include/c++/8/x86_64-redhat-linux/bits/c++locale.h \
     /usr/include/c++/8/clocale \
@@ -212,7 +221,6 @@ CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o : /leonardo_scratch/large/userinternal/
     /usr/include/c++/8/ext/alloc_traits.h \
     /usr/include/c++/8/bits/alloc_traits.h \
     /usr/include/c++/8/ext/string_conversions.h \
-    /usr/include/c++/8/cstdio \
     /usr/include/c++/8/cerrno \
     /usr/include/errno.h \
     /usr/include/bits/errno.h \
@@ -242,21 +250,10 @@ CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o : /leonardo_scratch/large/userinternal/
     /usr/include/c++/8/bits/ostream.tcc \
     /usr/include/c++/8/istream \
     /usr/include/c++/8/bits/istream.tcc \
-    /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/../includes/error_checking.h \
-    /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/../includes/performance_result.h \
+    /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/cudafun/../includes/performance_result.h \
     /usr/include/c++/8/vector \
     /usr/include/c++/8/bits/stl_construct.h \
     /usr/include/c++/8/bits/stl_uninitialized.h \
     /usr/include/c++/8/bits/stl_vector.h \
     /usr/include/c++/8/bits/stl_bvector.h \
-    /usr/include/c++/8/bits/vector.tcc \
-    /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/../includes/performance_utils.h \
-    /usr/include/c++/8/chrono \
-    /usr/include/c++/8/ratio \
-    /usr/include/c++/8/limits \
-    /usr/include/c++/8/ctime \
-    /usr/include/c++/8/bits/parse_numbers.h \
-    /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/../includes/matrix_mul_kernel.h \
-    /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/../includes/dgemm_functions.h \
-    /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/../includes/matrix_management.h \
-    /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/../includes/kernel_runner.h
+    /usr/include/c++/8/bits/vector.tcc

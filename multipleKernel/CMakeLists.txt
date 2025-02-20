@@ -16,6 +16,9 @@ include_directories(${CUDA_INCLUDE_DIRS})
 set(SOURCES
     dgemm_cuda.cpp
     run_dgemm.cu
+    cudafun/kernel_runner.cu
+    cudafun/matrix_management.cu
+    cudafun/data_transfer.cu
     cudafun/matrix_mul_kernel1.cu
     cudafun/matrix_mul_kernel2.cu
     cudafun/matrix_mul_kernel3.cu

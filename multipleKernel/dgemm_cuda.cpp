@@ -47,8 +47,9 @@ int main() {
         }
     }
 
+
     // Print final summary
-    printSummary(results);
+    printDetailedKernelStats(results);
 
     return 0;
 }

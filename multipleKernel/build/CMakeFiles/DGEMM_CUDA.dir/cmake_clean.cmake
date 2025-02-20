@@ -1,4 +1,10 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/DGEMM_CUDA.dir/cudafun/data_transfer.cu.o"
+  "CMakeFiles/DGEMM_CUDA.dir/cudafun/data_transfer.cu.o.d"
+  "CMakeFiles/DGEMM_CUDA.dir/cudafun/kernel_runner.cu.o"
+  "CMakeFiles/DGEMM_CUDA.dir/cudafun/kernel_runner.cu.o.d"
+  "CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_management.cu.o"
+  "CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_management.cu.o.d"
   "CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel1.cu.o"
   "CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel1.cu.o.d"
   "CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel2.cu.o"

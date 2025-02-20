@@ -3,33 +3,44 @@
 #ifndef PERFORMANCE_RESULT_H
 #define PERFORMANCE_RESULT_H
 
-// In performance_result.h
-class PerformanceResult {
-    public:
-        int size;
+#include <vector>
+#include <string>
+
+#pragma once
+#include <vector>
+#include <string>
+
+struct PerformanceResult {
+    int size;
+    
+    // Host-to-Device transfer metrics
+    double transfer_to_device_time;
+    double bandwidth_to_device;
+    
+    // Kernel results structure
+    struct KernelResult {
+        std::string name;
         double computation_time;
         double gflops;
-        double transfer_to_device_time;
         double transfer_from_device_time;
-        double bandwidth_to_device;
         double bandwidth_from_device;
-    
-        // Add members for Kernel 1
-        double computation_time_kernel1;
-        double gflops_kernel1;
-        double transfer_to_device_time_kernel1;
-        double transfer_from_device_time_kernel1;
-        double bandwidth_to_device_kernel1;
-        double bandwidth_from_device_kernel1;
-    
-        // Add members for Kernel 2
-        double computation_time_kernel2;
-        double gflops_kernel2;
-        double transfer_to_device_time_kernel2;
-        double transfer_from_device_time_kernel2;
-        double bandwidth_to_device_kernel2;
-        double bandwidth_from_device_kernel2;
     };
     
+    // Vector to store results for multiple kernels
+    std::vector<KernelResult> kernel_results;
+
+    // Helper function to add kernel result
+    void addKernelResult(const std::string& name, double comp_time, double gflops, 
+                        double transfer_time, double bandwidth) {
+        KernelResult kr;
+        kr.name = name;
+        kr.computation_time = comp_time;
+        kr.gflops = gflops;
+        kr.transfer_from_device_time = transfer_time;
+        kr.bandwidth_from_device = bandwidth;
+        kernel_results.push_back(kr);
+    }
+};
+
 #endif // PERFORMANCE_RESULT_H
 

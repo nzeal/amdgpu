@@ -63,6 +63,5 @@ CMakeFiles/DGEMM_CUDA.dir/dgemm_cuda.cpp.o: \
  ../includes/performance_result.h \
  ../includes/performance_utils.h
 CMakeFiles/DGEMM_CUDA.dir/utility/print_summary.cpp.o: \
- ../includes/dgemm_functions.h \
  ../includes/performance_result.h \
  ../utility/print_summary.cpp
