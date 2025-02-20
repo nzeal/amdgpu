@@ -150,7 +150,7 @@ void runDGEMM(int size, std::vector<PerformanceResult>& results) {
 
     transferDataToDevice(h_A, h_B, d_A, d_B, m, k, n, result);
 
-    dim3 threadsPerBlock(16, 16);
+    dim3 threadsPerBlock(32, 32);
     dim3 numBlocks((n + threadsPerBlock.x - 1) / threadsPerBlock.x,
                    (m + threadsPerBlock.y - 1) / threadsPerBlock.y);
 
@@ -158,7 +158,9 @@ void runDGEMM(int size, std::vector<PerformanceResult>& results) {
     double beta = 0.0;
 
     // Run and verify Kernel 1
-    runKernel(matrixMulKernel1, d_A, d_B, d_C, m, n, k, numBlocks, threadsPerBlock, "Kernel 1", result, alpha, beta);
+    runKernel(matrixMulKernel1, d_A, d_B, d_C,
+		    m, n, k, numBlocks, threadsPerBlock,
+		    "Kernel 1", result, alpha, beta);
     transferDataFromDevice(h_C, d_C, m, n, "Kernel 1", result);
     printf("Verifying Kernel 1 results:\n");
     verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
@@ -168,10 +170,30 @@ void runDGEMM(int size, std::vector<PerformanceResult>& results) {
     CHECK_CUDA(cudaMemcpy(d_C, h_C, m * n * sizeof(double), cudaMemcpyHostToDevice));
 
     // Run and verify Kernel 2
-    runKernel(matrixMulKernel2, d_A, d_B, d_C, m, n, k, numBlocks, threadsPerBlock, "Kernel 2", result, alpha, beta);
+    runKernel(matrixMulKernel2, d_A, d_B, d_C,
+		    m, n, k, numBlocks, threadsPerBlock, 
+		    "Kernel 2", result, alpha, beta);
     transferDataFromDevice(h_C, d_C, m, n, "Kernel 2", result);
     printf("Verifying Kernel 2 results:\n");
     verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
+
+    // Run and verify kernel 3 
+     runKernel(matrixMulKernel3, d_A, d_B, d_C, 
+		     m, n, k, numBlocks, threadsPerBlock, 
+		     "Kernel 3", result, alpha, beta);
+    transferDataFromDevice(h_C, d_C, m, n, "Kernel 3", result);
+    printf("Verifying Kernel 3 results:\n");
+    verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
+
+
+    // Run and verify kernel 4
+    runKernel(matrixMulKernel4, d_A, d_B, d_C,
+                     m, n, k, numBlocks, threadsPerBlock,
+                     "Kernel 4", result, alpha, beta);
+    transferDataFromDevice(h_C, d_C, m, n, "Kernel 4", result);
+    printf("Verifying Kernel 4 results:\n"); 
+    verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
+
 
     results.push_back(result);
 

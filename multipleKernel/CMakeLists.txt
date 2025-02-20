@@ -17,6 +17,8 @@ set(SOURCES
     dgemm_cuda.cpp
     cudafun/matrix_mul_kernel1.cu
     cudafun/matrix_mul_kernel2.cu
+    cudafun/matrix_mul_kernel3.cu
+    cudafun/matrix_mul_kernel4.cu
     cudafun/run_dgemm.cu
     utility/print_summary.cpp
 )

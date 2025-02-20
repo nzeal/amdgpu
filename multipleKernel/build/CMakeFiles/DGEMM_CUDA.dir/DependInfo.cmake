@@ -23,6 +23,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/cudafun/matrix_mul_kernel1.cu" "CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel1.cu.o" "gcc" "CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel1.cu.o.d"
   "/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/cudafun/matrix_mul_kernel2.cu" "CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel2.cu.o" "gcc" "CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel2.cu.o.d"
+  "/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/cudafun/matrix_mul_kernel3.cu" "CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel3.cu.o" "gcc" "CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel3.cu.o.d"
+  "/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/cudafun/matrix_mul_kernel4.cu" "CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel4.cu.o" "gcc" "CMakeFiles/DGEMM_CUDA.dir/cudafun/matrix_mul_kernel4.cu.o.d"
   "/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/cudafun/run_dgemm.cu" "CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.o" "gcc" "CMakeFiles/DGEMM_CUDA.dir/cudafun/run_dgemm.cu.o.d"
   )
 
