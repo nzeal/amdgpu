@@ -1,7 +1,3 @@
-/* -----------------------------------------------------------------------------------------Ref--
-* Sebastien: sev-v
-* --------------------------------------------------------------------------------------------*/
-
 #include "../includes/matrix_mul_kernel.h"
 
 __global__ void matrixMulKernel4(const double *A, const double *B, double *C, 
