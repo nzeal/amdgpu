@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include <cmath>
 #include "../includes/error_checking.h"
 #include "../includes/performance_result.h"
 #include "../includes/performance_utils.h"
@@ -51,12 +52,12 @@ void transferDataToDevice(double *h_A, double *h_B, double *d_A, double *d_B, in
 }
 
 // Function to run a kernel and measure its performance
-void runKernel(void (*kernel)(const double*, const double*, double*, int, int, int), 
+void runKernel(void (*kernel)(const double*, const double*, double*, int, int, int, double, double), 
                const double *d_A, const double *d_B, double *d_C, 
                int m, int n, int k, dim3 numBlocks, dim3 threadsPerBlock, 
-               const char* kernelName, PerformanceResult &result) {
+               const char* kernelName, PerformanceResult &result, double alpha, double beta) {
     auto compute_start = getCurrentTime();
-    kernel<<<numBlocks, threadsPerBlock>>>(d_A, d_B, d_C, m, n, k);
+    kernel<<<numBlocks, threadsPerBlock>>>(d_A, d_B, d_C, m, n, k, alpha, beta);
     cudaDeviceSynchronize();
     auto compute_end = getCurrentTime();
 
@@ -100,13 +101,36 @@ void transferDataFromDevice(double *h_C, double *d_C, int m, int n, const char* 
     }
 }
 
-// Function to verify results
-void verifyResults(double *h_C, int m, int n, int k) {
-    double expected_value = k * 2.0;
-    if (std::abs(h_C[0] - expected_value) > 1e-5 ||
-        std::abs(h_C[m * n - 1] - expected_value) > 1e-5) {
-        printf("Verification FAILED: Expected %.2f, Got %.2f (first) %.2f (last)\n",
-               expected_value, h_C[0], h_C[m * n - 1]);
+// Updated verifyResults function
+void verifyResults(const double *h_A, const double *h_B, double *h_C, int m, int n, int k, double alpha, double beta) {
+    double epsilon = 1e-6;  // Tolerance for floating-point comparison
+    bool correct = true;
+    int errors = 0;
+    const int max_errors_to_print = 10;
+
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j) {
+            double expected = 0.0;
+            for (int p = 0; p < k; ++p) {
+                expected += h_A[i * k + p] * h_B[p * n + j];
+            }
+            expected = alpha * expected + beta * h_C[i * n + j];
+
+            double actual = h_C[i * n + j];
+            if (std::abs(expected - actual) > epsilon) {
+                if (errors < max_errors_to_print) {
+                    printf("Error at position (%d, %d): Expected %.8f, Got %.8f\n", i, j, expected, actual);
+                }
+                errors++;
+                correct = false;
+            }
+        }
+    }
+
+    if (correct) {
+        printf("Results verified: CORRECT\n");
+    } else {
+        printf("Results verified: INCORRECT. %d errors found.\n", errors);
     }
 }
 
@@ -126,17 +150,64 @@ void runDGEMM(int size, std::vector<PerformanceResult>& results) {
 
     transferDataToDevice(h_A, h_B, d_A, d_B, m, k, n, result);
 
-    dim3 threadsPerBlock(16, 16);
+    dim3 threadsPerBlock(32, 32);
     dim3 numBlocks((n + threadsPerBlock.x - 1) / threadsPerBlock.x,
                    (m + threadsPerBlock.y - 1) / threadsPerBlock.y);
 
-    runKernel(matrixMulKernel1, d_A, d_B, d_C, m, n, k, numBlocks, threadsPerBlock, "Kernel 1", result);
+    double alpha = 1.0;
+    double beta = 0.0;
+
+    printf("----------------------------------------------- Kernel-1\n");
+    // Run and verify Kernel 1
+    runKernel(matrixMulKernel1, d_A, d_B, d_C,
+		    m, n, k, numBlocks, threadsPerBlock,
+		    "Kernel 1", result, alpha, beta);
     transferDataFromDevice(h_C, d_C, m, n, "Kernel 1", result);
+    printf("Verifying Kernel 1 results:\n");
+    verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
 
-    runKernel(matrixMulKernel2, d_A, d_B, d_C, m, n, k, numBlocks, threadsPerBlock, "Kernel 2", result);
+    // Reset h_C to initial values (all zeros)
+    for(int i = 0; i < m * n; i++) h_C[i] = 0.0;
+    CHECK_CUDA(cudaMemcpy(d_C, h_C, m * n * sizeof(double), cudaMemcpyHostToDevice));
+
+    printf("----------------------------------------------- Kernel-2\n");
+
+    // Run and verify Kernel 2
+    runKernel(matrixMulKernel2, d_A, d_B, d_C,
+		    m, n, k, numBlocks, threadsPerBlock, 
+		    "Kernel 2", result, alpha, beta);
     transferDataFromDevice(h_C, d_C, m, n, "Kernel 2", result);
+    printf("Verifying Kernel 2 results:\n");
+    verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
 
-    verifyResults(h_C, m, n, k);
+    printf("----------------------------------------------- Kernel-3\n");
+    // Run and verify kernel 3 
+     runKernel(matrixMulKernel3, d_A, d_B, d_C, 
+		     m, n, k, numBlocks, threadsPerBlock, 
+		     "Kernel 3", result, alpha, beta);
+    transferDataFromDevice(h_C, d_C, m, n, "Kernel 3", result);
+    printf("Verifying Kernel 3 results:\n");
+    verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
+
+
+    printf("----------------------------------------------- Kernel-4\n");
+    // Run and verify kernel 4
+    runKernel(matrixMulKernel4, d_A, d_B, d_C,
+        m, n, k, numBlocks, threadsPerBlock,
+        "Kernel 4", result, alpha, beta);
+    transferDataFromDevice(h_C, d_C, m, n, "Kernel 4", result);
+    printf("Verifying Kernel 4 results:\n"); 
+    verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
+
+
+    printf("----------------------------------------------- Kernel-5\n");
+    // Run and verify kernel 5
+    runKernel(matrixMulKernel5, d_A, d_B, d_C,
+                     m, n, k, numBlocks, threadsPerBlock,
+                     "Kernel 5", result, alpha, beta);
+    transferDataFromDevice(h_C, d_C, m, n, "Kernel 5", result);
+    printf("Verifying Kernel 5 results:\n");
+    verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
 
     results.push_back(result);
 
@@ -148,5 +219,4 @@ void runDGEMM(int size, std::vector<PerformanceResult>& results) {
     free(h_B);
     free(h_C);
 }
-
 

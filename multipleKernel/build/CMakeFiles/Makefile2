@@ -81,12 +81,12 @@ clean: CMakeFiles/DGEMM_CUDA.dir/clean
 CMakeFiles/DGEMM_CUDA.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DGEMM_CUDA.dir/build.make CMakeFiles/DGEMM_CUDA.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DGEMM_CUDA.dir/build.make CMakeFiles/DGEMM_CUDA.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target DGEMM_CUDA"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target DGEMM_CUDA"
 .PHONY : CMakeFiles/DGEMM_CUDA.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/DGEMM_CUDA.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles 9
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/DGEMM_CUDA.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/build/CMakeFiles 0
 .PHONY : CMakeFiles/DGEMM_CUDA.dir/rule
