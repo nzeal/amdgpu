@@ -1036,17 +1036,13 @@ CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o: ../run_dgemm.cu \
   /usr/include/c++/8/istream \
   /usr/include/c++/8/bits/istream.tcc \
   ../includes/error_checking.h \
-  /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/math_libs/12.3/include/cublas_v2.h \
-  /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/math_libs/12.3/include/cublas_api.h \
-  /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/cuComplex.h \
-  /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/cuda_fp16.h \
-  /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/nv/target \
-  /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/nv/detail/__target_macros \
-  /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/nv/detail/__preprocessor \
-  /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/cuda_fp16.hpp \
-  /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/cuda_bf16.h \
-  /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/cuda_bf16.hpp \
   ../includes/performance_result.h \
+  /usr/include/c++/8/vector \
+  /usr/include/c++/8/bits/stl_construct.h \
+  /usr/include/c++/8/bits/stl_uninitialized.h \
+  /usr/include/c++/8/bits/stl_vector.h \
+  /usr/include/c++/8/bits/stl_bvector.h \
+  /usr/include/c++/8/bits/vector.tcc \
   ../includes/performance_utils.h \
   /usr/include/c++/8/chrono \
   /usr/include/c++/8/ratio \
@@ -1055,17 +1051,25 @@ CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o: ../run_dgemm.cu \
   /usr/include/c++/8/bits/parse_numbers.h \
   ../includes/matrix_mul_kernel.h \
   ../includes/dgemm_functions.h \
-  /usr/include/c++/8/vector \
-  /usr/include/c++/8/bits/stl_construct.h \
-  /usr/include/c++/8/bits/stl_uninitialized.h \
-  /usr/include/c++/8/bits/stl_vector.h \
-  /usr/include/c++/8/bits/stl_bvector.h \
-  /usr/include/c++/8/bits/vector.tcc
+  ../includes/kernel_registry.h \
+  /usr/include/c++/8/functional \
+  /usr/include/c++/8/tuple \
+  /usr/include/c++/8/array \
+  /usr/include/c++/8/bits/uses_allocator.h \
+  /usr/include/c++/8/bits/invoke.h \
+  /usr/include/c++/8/bits/refwrap.h \
+  /usr/include/c++/8/bits/std_function.h
 
 
-/usr/include/c++/8/bits/vector.tcc:
+/usr/include/c++/8/bits/uses_allocator.h:
 
-/usr/include/c++/8/vector:
+/usr/include/c++/8/array:
+
+/usr/include/c++/8/tuple:
+
+/usr/include/c++/8/functional:
+
+../includes/kernel_registry.h:
 
 ../includes/dgemm_functions.h:
 
@@ -1073,21 +1077,9 @@ CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o: ../run_dgemm.cu \
 
 /usr/include/c++/8/limits:
 
-/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/cuda_bf16.hpp:
+/usr/include/c++/8/bits/vector.tcc:
 
-/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/cuda_bf16.h:
-
-/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/cuda_fp16.hpp:
-
-/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/nv/detail/__preprocessor:
-
-/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/nv/detail/__target_macros:
-
-/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/nv/target:
-
-/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/math_libs/12.3/include/cublas_v2.h:
-
-/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/math_libs/12.3/include/cublas_api.h:
+/usr/include/c++/8/vector:
 
 /usr/include/c++/8/istream:
 
@@ -1158,6 +1150,8 @@ CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o: ../run_dgemm.cu \
 /usr/include/c++/8/x86_64-redhat-linux/bits/gthr-default.h:
 
 /usr/include/c++/8/x86_64-redhat-linux/bits/gthr.h:
+
+/usr/include/c++/8/bits/refwrap.h:
 
 /usr/include/c++/8/cctype:
 
@@ -1236,6 +1230,8 @@ CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o: ../run_dgemm.cu \
 /usr/include/bits/types/__sigset_t.h:
 
 /usr/include/bits/types/timer_t.h:
+
+/usr/include/c++/8/bits/invoke.h:
 
 /usr/include/sys/select.h:
 
@@ -1330,8 +1326,6 @@ CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o: ../run_dgemm.cu \
 /usr/include/bits/types/cookie_io_functions_t.h:
 
 /usr/include/bits/types/struct_tm.h:
-
-/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/cuComplex.h:
 
 /usr/include/bits/stdint-uintn.h:
 
@@ -1585,6 +1579,8 @@ CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o: ../run_dgemm.cu \
 
 /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/crt/sm_80_rt.h:
 
+/usr/include/c++/8/bits/std_function.h:
+
 /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/crt/sm_90_rt.hpp:
 
 /usr/include/c++/8/bits/stl_uninitialized.h:
@@ -1596,8 +1592,6 @@ CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o: ../run_dgemm.cu \
 /usr/include/c++/8/math.h:
 
 /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/surface_indirect_functions.h:
-
-/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/cuda_fp16.h:
 
 /usr/include/bits/locale.h:
 

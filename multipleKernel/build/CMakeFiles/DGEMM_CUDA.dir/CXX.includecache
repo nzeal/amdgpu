@@ -457,6 +457,16 @@ includes/matrix_mul_kernel.h
 /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/matrix_mul_kernel.h
 includes/dgemm_functions.h
 /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/dgemm_functions.h
+includes/kernel_registry.h
+/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/kernel_registry.h
+includes/cuda_version_check.h
+/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/cuda_version_check.h
+
+/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/cuda_version_check.h
+cuda_runtime.h
+-
+stdio.h
+-
 
 /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/dgemm_functions.h
 vector
@@ -467,16 +477,26 @@ performance_result.h
 /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/error_checking.h
 cuda_runtime.h
 -
-cublas_v2.h
--
 cstdio
 -
 cstdlib
 -
 
+/leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/kernel_registry.h
+vector
+-
+string
+-
+functional
+-
+
 /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/matrix_mul_kernel.h
 
 /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/performance_result.h
+string
+-
+vector
+-
 
 /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/performance_utils.h
 chrono

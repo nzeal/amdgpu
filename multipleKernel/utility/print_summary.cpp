@@ -6,19 +6,20 @@
 
 void printSummary(const std::vector<PerformanceResult>& results) {
     printf("\n=== Performance Summary ===\n");
-    printf("%8s %12s %15s %15s %15s %15s %15s\n",
-           "Size", "GFLOPS1", "Compute1(ms)", "H2D BW1(GB/s)", "D2H BW1(GB/s)", "GFLOPS2", "Compute2(ms)");
-    printf("%s\n", std::string(90, '-').c_str());
+    
+    // Print header
+    printf("%-8s", "Size");
+    for (const auto& kernel_result : results[0].kernel_results) {
+        printf(" | %-20s", kernel_result.kernel_name.c_str());
+    }
+    printf("\n%s\n", std::string(8 + results[0].kernel_results.size() * 23, '-').c_str());
 
+    // Print results for each size
     for (const auto& result : results) {
-        printf("%8d %12.2f %15.2f %15.2f %15.2f %12.2f %15.2f\n",
-               result.size,
-               result.gflops_kernel1,
-               result.computation_time_kernel1 * 1000,
-               result.bandwidth_to_device,
-               result.bandwidth_from_device_kernel1,
-               result.gflops_kernel2,
-               result.computation_time_kernel2 * 1000);
+        printf("%-8d", result.size);
+        for (const auto& kernel_result : result.kernel_results) {
+            printf(" | %7.2f GFLOPS", kernel_result.gflops);
+        }
+        printf("\n");
     }
 }
-

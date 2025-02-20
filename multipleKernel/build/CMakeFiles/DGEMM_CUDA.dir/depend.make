@@ -57,8 +57,10 @@ CMakeFiles/DGEMM_CUDA.dir/dgemm_cuda.cpp.o: \
  /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/vector_functions.hpp \
  /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/vector_types.h \
  ../dgemm_cuda.cpp \
+ ../includes/cuda_version_check.h \
  ../includes/dgemm_functions.h \
  ../includes/error_checking.h \
+ ../includes/kernel_registry.h \
  ../includes/matrix_mul_kernel.h \
  ../includes/performance_result.h \
  ../includes/performance_utils.h

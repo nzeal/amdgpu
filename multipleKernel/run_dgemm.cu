@@ -8,6 +8,8 @@
 #include "../includes/performance_utils.h"
 #include "../includes/matrix_mul_kernel.h"
 #include "../includes/dgemm_functions.h"
+#include "kernel_registry.h"
+#include "performance_result.h"
 
 // Function to allocate memory and initialize matrices
 void allocateAndInitializeMatrices(double **h_A, double **h_B, double **h_C, double **d_A, double **d_B, double **d_C, int m, int k, int n) {
@@ -55,50 +57,40 @@ void transferDataToDevice(double *h_A, double *h_B, double *d_A, double *d_B, in
 void runKernel(void (*kernel)(const double*, const double*, double*, int, int, int, double, double), 
                const double *d_A, const double *d_B, double *d_C, 
                int m, int n, int k, dim3 numBlocks, dim3 threadsPerBlock, 
-               const char* kernelName, PerformanceResult &result, double alpha, double beta) {
+               const char* kernelName, KernelResult &kernel_result, double alpha, double beta) {
     auto compute_start = getCurrentTime();
     kernel<<<numBlocks, threadsPerBlock>>>(d_A, d_B, d_C, m, n, k, alpha, beta);
     cudaDeviceSynchronize();
     auto compute_end = getCurrentTime();
 
-    double computation_time = calculateDurationInSeconds(compute_start, compute_end);
+    kernel_result.computation_time = calculateDurationInSeconds(compute_start, compute_end);
     double flops = 2.0 * m * n * k;
-    double gflops = (computation_time > 0) ? (flops / (computation_time * 1e9)) : 0.0;
+    kernel_result.gflops = (kernel_result.computation_time > 0) ? 
+        (flops / (kernel_result.computation_time * 1e9)) : 0.0;
 
     printf("%s Computation: %.2f ms (%.2f GFLOPS)\n",
-           kernelName, computation_time * 1000, gflops);
-
-    if (strcmp(kernelName, "Kernel 1") == 0) {
-        result.computation_time_kernel1 = computation_time;
-        result.gflops_kernel1 = gflops;
-    } else {
-        result.computation_time_kernel2 = computation_time;
-        result.gflops_kernel2 = gflops;
-    }
+           kernelName, kernel_result.computation_time * 1000, kernel_result.gflops);
 }
 
 // Function to transfer data from device to host
-void transferDataFromDevice(double *h_C, double *d_C, int m, int n, const char* kernelName, PerformanceResult &result) {
-    size_t size_C = m * n * sizeof(double);
+void transferDataFromDevice(double *h_C, double *d_C, int m, int n, 
+    const char* kernelName, KernelResult &kernel_result) {
+size_t size_C = m * n * sizeof(double);
 
-    cudaDeviceSynchronize();
-    auto transfer_back_start = getCurrentTime();
-    CHECK_CUDA(cudaMemcpy(h_C, d_C, size_C, cudaMemcpyDeviceToHost));
-    cudaDeviceSynchronize();
-    auto transfer_back_end = getCurrentTime();
+cudaDeviceSynchronize();
+auto transfer_back_start = getCurrentTime();
+CHECK_CUDA(cudaMemcpy(h_C, d_C, size_C, cudaMemcpyDeviceToHost));
+cudaDeviceSynchronize();
+auto transfer_back_end = getCurrentTime();
 
-    double transfer_time = calculateDurationInSeconds(transfer_back_start, transfer_back_end);
-    double bandwidth = (size_C / (1024.0 * 1024.0 * 1024.0)) / transfer_time;
+kernel_result.transfer_from_device_time = calculateDurationInSeconds(transfer_back_start, transfer_back_end);
+kernel_result.bandwidth_from_device = (size_C / (1024.0 * 1024.0 * 1024.0)) / 
+                  kernel_result.transfer_from_device_time;
 
-    printf("D2H Transfer %s: %.2f ms (%.2f GB/s)\n", kernelName, transfer_time * 1000, bandwidth);
-
-    if (strcmp(kernelName, "Kernel 1") == 0) {
-        result.transfer_from_device_time_kernel1 = transfer_time;
-        result.bandwidth_from_device_kernel1 = bandwidth;
-    } else {
-        result.transfer_from_device_time_kernel2 = transfer_time;
-        result.bandwidth_from_device_kernel2 = bandwidth;
-    }
+printf("D2H Transfer %s: %.2f ms (%.2f GB/s)\n", 
+kernelName, 
+kernel_result.transfer_from_device_time * 1000, 
+kernel_result.bandwidth_from_device);
 }
 
 // Updated verifyResults function
@@ -157,57 +149,35 @@ void runDGEMM(int size, std::vector<PerformanceResult>& results) {
     double alpha = 1.0;
     double beta = 0.0;
 
-    printf("----------------------------------------------- Kernel-1\n");
-    // Run and verify Kernel 1
-    runKernel(matrixMulKernel1, d_A, d_B, d_C,
-		    m, n, k, numBlocks, threadsPerBlock,
-		    "Kernel 1", result, alpha, beta);
-    transferDataFromDevice(h_C, d_C, m, n, "Kernel 1", result);
-    printf("Verifying Kernel 1 results:\n");
-    verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
+    // Get all registered kernels
+    const auto& kernels = KernelRegistry::getInstance().getKernels();
 
-    // Reset h_C to initial values (all zeros)
-    for(int i = 0; i < m * n; i++) h_C[i] = 0.0;
-    CHECK_CUDA(cudaMemcpy(d_C, h_C, m * n * sizeof(double), cudaMemcpyHostToDevice));
+    // Run each kernel
+    for (const auto& kernel : kernels) {
+        printf("----------------------------------------------- %s\n", kernel.name.c_str());
+        
+        // Reset C matrix
+        for(int i = 0; i < m * n; i++) h_C[i] = 0.0;
+        CHECK_CUDA(cudaMemcpy(d_C, h_C, m * n * sizeof(double), cudaMemcpyHostToDevice));
 
-    printf("----------------------------------------------- Kernel-2\n");
+        KernelResult kernel_result;
+        kernel_result.kernel_name = kernel.name;
 
-    // Run and verify Kernel 2
-    runKernel(matrixMulKernel2, d_A, d_B, d_C,
-		    m, n, k, numBlocks, threadsPerBlock, 
-		    "Kernel 2", result, alpha, beta);
-    transferDataFromDevice(h_C, d_C, m, n, "Kernel 2", result);
-    printf("Verifying Kernel 2 results:\n");
-    verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
+        // Run kernel and measure performance
+        runKernel(kernel.function, d_A, d_B, d_C, m, n, k, 
+                 numBlocks, threadsPerBlock, kernel.name.c_str(), 
+                 kernel_result, alpha, beta);
 
-    printf("----------------------------------------------- Kernel-3\n");
-    // Run and verify kernel 3 
-     runKernel(matrixMulKernel3, d_A, d_B, d_C, 
-		     m, n, k, numBlocks, threadsPerBlock, 
-		     "Kernel 3", result, alpha, beta);
-    transferDataFromDevice(h_C, d_C, m, n, "Kernel 3", result);
-    printf("Verifying Kernel 3 results:\n");
-    verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
+        // Transfer and measure results
+        transferDataFromDevice(h_C, d_C, m, n, kernel.name.c_str(), kernel_result);
 
+        // Verify results
+        printf("Verifying %s results:\n", kernel.name.c_str());
+        verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
 
-    printf("----------------------------------------------- Kernel-4\n");
-    // Run and verify kernel 4
-    runKernel(matrixMulKernel4, d_A, d_B, d_C,
-        m, n, k, numBlocks, threadsPerBlock,
-        "Kernel 4", result, alpha, beta);
-    transferDataFromDevice(h_C, d_C, m, n, "Kernel 4", result);
-    printf("Verifying Kernel 4 results:\n"); 
-    verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
-
-
-    printf("----------------------------------------------- Kernel-5\n");
-    // Run and verify kernel 5
-    runKernel(matrixMulKernel5, d_A, d_B, d_C,
-                     m, n, k, numBlocks, threadsPerBlock,
-                     "Kernel 5", result, alpha, beta);
-    transferDataFromDevice(h_C, d_C, m, n, "Kernel 5", result);
-    printf("Verifying Kernel 5 results:\n");
-    verifyResults(h_A, h_B, h_C, m, n, k, alpha, beta);
+        // Store results
+        result.kernel_results.push_back(kernel_result);
+    }
 
     results.push_back(result);
 
@@ -219,4 +189,3 @@ void runDGEMM(int size, std::vector<PerformanceResult>& results) {
     free(h_B);
     free(h_C);
 }
-

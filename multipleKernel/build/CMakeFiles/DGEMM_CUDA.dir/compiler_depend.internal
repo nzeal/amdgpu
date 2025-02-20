@@ -1042,17 +1042,13 @@ CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o
  /usr/include/c++/8/istream
  /usr/include/c++/8/bits/istream.tcc
  /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/error_checking.h
- /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/math_libs/12.3/include/cublas_v2.h
- /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/math_libs/12.3/include/cublas_api.h
- /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/cuComplex.h
- /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/cuda_fp16.h
- /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/nv/target
- /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/nv/detail/__target_macros
- /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/nv/detail/__preprocessor
- /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/cuda_fp16.hpp
- /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/cuda_bf16.h
- /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/nvhpc-24.3-v63z4inohb4ywjeggzhlhiuvuoejr2le/Linux_x86_64/24.3/cuda/12.3/include/cuda_bf16.hpp
  /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/performance_result.h
+ /usr/include/c++/8/vector
+ /usr/include/c++/8/bits/stl_construct.h
+ /usr/include/c++/8/bits/stl_uninitialized.h
+ /usr/include/c++/8/bits/stl_vector.h
+ /usr/include/c++/8/bits/stl_bvector.h
+ /usr/include/c++/8/bits/vector.tcc
  /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/performance_utils.h
  /usr/include/c++/8/chrono
  /usr/include/c++/8/ratio
@@ -1061,10 +1057,12 @@ CMakeFiles/DGEMM_CUDA.dir/run_dgemm.cu.o
  /usr/include/c++/8/bits/parse_numbers.h
  /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/matrix_mul_kernel.h
  /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/dgemm_functions.h
- /usr/include/c++/8/vector
- /usr/include/c++/8/bits/stl_construct.h
- /usr/include/c++/8/bits/stl_uninitialized.h
- /usr/include/c++/8/bits/stl_vector.h
- /usr/include/c++/8/bits/stl_bvector.h
- /usr/include/c++/8/bits/vector.tcc
+ /leonardo_scratch/large/userinternal/nshukla1/myGIT/amdgpu/multipleKernel/includes/kernel_registry.h
+ /usr/include/c++/8/functional
+ /usr/include/c++/8/tuple
+ /usr/include/c++/8/array
+ /usr/include/c++/8/bits/uses_allocator.h
+ /usr/include/c++/8/bits/invoke.h
+ /usr/include/c++/8/bits/refwrap.h
+ /usr/include/c++/8/bits/std_function.h
 
