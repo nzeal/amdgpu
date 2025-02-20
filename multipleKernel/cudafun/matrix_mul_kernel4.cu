@@ -8,17 +8,22 @@
 
 __global__ void matrixMulKernel4(const double *A, const double *B, double *C,
                                 int M, int N, int K, double alpha, double beta) {
-    // Block Tile Size
+// --------------------------------------------------------------------------- Block Tile Size
+   /* These constants define the size of the tiles used for matrix blocks. 
+      The tiles help to divide the large matrices into smaller chunks, 
+      which are loaded into shared memory for efficient access. */
+
     constexpr int BN = 128;
     constexpr int BM = 128;
+    constexpr int BK = 8;    // Number of Row or column we read per batch
 
-    // Number of Row or column we read per batch
-    constexpr int BK = 8;
-
-    // Thread Tile size
+/* ---------------------------------------------------------------------------- Thread Tile size
+   The kernel organizes threads into "waves", which are groups of 32 threads. 
+   This part helps assign each thread to work on a specific sub-task within the block.  
+/ --------------------------------------------------------------------------------------------*/
+    
     constexpr int TN = 4;
     constexpr int TM = 4;
-
     constexpr int nbWaves = BLOCK_SIZE / 32;
     // Wave Tile size
     constexpr int WN = 64;
@@ -70,7 +75,10 @@ __global__ void matrixMulKernel4(const double *A, const double *B, double *C,
 
     // Iteration over BK blocks
     for (int kId = 0; kId < K; kId += BK) {
-        // Populate shared memory with A and B tiles
+        // Populate shared memory with A and B tiles 
+        // These loops load the data from global memory into shared memory.
+        // Each thread computes a small portion of a matrix (a tile) and loads it into shared memory.
+        // This enables faster access to the matrix elements during computation.
         for (int i = 0; i < nbReadsB; i++) {
             int index_x = BN * blockIdx.x + rBIdx;
             int index_y = rBIdy + i * strideReadB + kId;
