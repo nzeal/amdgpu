@@ -1,7 +1,0 @@
-/leonardo_scratch/large/userinternal/nshukla1/myGIT/nwaysMatMul/cuda/old/build/CMakeFiles/install/strip.dir
-/leonardo_scratch/large/userinternal/nshukla1/myGIT/nwaysMatMul/cuda/old/build/CMakeFiles/edit_cache.dir
-/leonardo_scratch/large/userinternal/nshukla1/myGIT/nwaysMatMul/cuda/old/build/CMakeFiles/install.dir
-/leonardo_scratch/large/userinternal/nshukla1/myGIT/nwaysMatMul/cuda/old/build/CMakeFiles/rebuild_cache.dir
-/leonardo_scratch/large/userinternal/nshukla1/myGIT/nwaysMatMul/cuda/old/build/CMakeFiles/DGEMM_CUDA.dir
-/leonardo_scratch/large/userinternal/nshukla1/myGIT/nwaysMatMul/cuda/old/build/CMakeFiles/list_install_components.dir
-/leonardo_scratch/large/userinternal/nshukla1/myGIT/nwaysMatMul/cuda/old/build/CMakeFiles/install/local.dir
