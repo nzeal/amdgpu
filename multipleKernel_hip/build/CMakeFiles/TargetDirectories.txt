@@ -1,0 +1,3 @@
+/pfs/lustrep1/scratch/project_465000972/test/amdgpu/multipleKernel_hip/build/CMakeFiles/rebuild_cache.dir
+/pfs/lustrep1/scratch/project_465000972/test/amdgpu/multipleKernel_hip/build/CMakeFiles/edit_cache.dir
+/pfs/lustrep1/scratch/project_465000972/test/amdgpu/multipleKernel_hip/build/CMakeFiles/xGEMM.dir
